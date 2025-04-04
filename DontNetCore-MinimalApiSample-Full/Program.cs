@@ -19,5 +19,6 @@ app.UseHttpsRedirection();
 //--------------------------Endpoints--------------------------------
 // Add static class for Endpoint service file
 app.AddRootEndPoints();
+app.AddSampleEndpoints();
 
 app.Run();

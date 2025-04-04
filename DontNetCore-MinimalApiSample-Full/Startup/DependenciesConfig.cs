@@ -9,6 +9,9 @@ namespace DontNetCore_MinimalApiStructure.Startup
             //All Dependencies will be listed here
             builder.Services.AddOpenApiServices();
 
+            //Load the data from the Json file
+            builder.Services.AddTransient<Repository.SampleData>();
+
 
         }
 
