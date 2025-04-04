@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
-namespace DontNetCore_MinimalApiStructure.Startup
+namespace DontNetCore_MinimalApiStructure.Startup.Dependencies
 {
     public static class CoresConfig
     {
@@ -18,7 +18,7 @@ namespace DontNetCore_MinimalApiStructure.Startup
                     });
             });
         }
-        public static void AddCoresConfig(this IApplicationBuilder app)
+        public static void UseAppCoresConfig(this IApplicationBuilder app)
         {
             app.UseCors(CoresPolicy);
         }

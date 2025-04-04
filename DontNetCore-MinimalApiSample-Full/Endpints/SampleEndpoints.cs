@@ -4,7 +4,7 @@ namespace DontNetCore_MinimalApiStructure.Endpints
 {
     public static class SampleEndpoints
     {
-        public static void AddSampleEndpoints(this WebApplication app)
+        public static void UseAppSampleEndpoints(this WebApplication app)
         {
             //Get all samples---------------------------
 

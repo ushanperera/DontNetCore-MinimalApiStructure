@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+﻿using DontNetCore_MinimalApiStructure.Startup.Dependencies;
 
 namespace DontNetCore_MinimalApiStructure.Startup
 {
@@ -14,6 +14,9 @@ namespace DontNetCore_MinimalApiStructure.Startup
 
             //Add the Cores services
             builder.Services.AddCoresServises();
+
+            //Add the Health Checks servises
+            builder.Services.AddAllHealthChecks();
 
 
         }

@@ -2,7 +2,7 @@
 {
     public static class RootEnpoints
 {
-        public static void AddRootEndPoints(this WebApplication app)
+        public static void UseAppRootEndPoints(this WebApplication app)
         {
             app.MapGet("/hello", () => "Hello World!");
 

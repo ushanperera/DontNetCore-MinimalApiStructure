@@ -1,6 +1,6 @@
 ﻿using Scalar.AspNetCore;
 
-namespace DontNetCore_MinimalApiStructure.Startup
+namespace DontNetCore_MinimalApiStructure.Startup.Dependencies
 {
     public static class OpenApiConfig
     {
@@ -9,7 +9,7 @@ namespace DontNetCore_MinimalApiStructure.Startup
             services.AddOpenApi();
         }
 
-        public static void UseOpenApi(this WebApplication app)
+        public static void UseAppOpenApi(this WebApplication app)
         {
             if (app.Environment.IsDevelopment())
             {

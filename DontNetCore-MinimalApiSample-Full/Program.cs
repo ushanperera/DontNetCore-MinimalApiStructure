@@ -1,5 +1,6 @@
 using DontNetCore_MinimalApiStructure.Endpints;
 using DontNetCore_MinimalApiStructure.Startup;
+using DontNetCore_MinimalApiStructure.Startup.Dependencies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,19 +9,25 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services from service file
 builder.AddDependencies();
 
-//-------------------------Add Middleware to app--------------------
+
+//--------------------------Middleware--------------------------------
 var app = builder.Build();
-//added static clas for OpenApi Middleware
-app.UseOpenApi();
-
-
 app.UseHttpsRedirection();
 
-//--------------------------Endpoints--------------------------------
-// Add static class for Endpoint service Middleware
-app.AddRootEndPoints();
-app.AddSampleEndpoints();
 
-// Add static class for CORES Middleware
-app.AddCoresConfig();
+//add custom - OpenApi Middleware
+app.UseAppOpenApi();
+
+// add custom - Endpoint service Middleware
+app.UseAppRootEndPoints();
+app.UseAppSampleEndpoints();
+
+// add custom - CORES Middleware
+app.UseAppCoresConfig();
+
+// add custom - Health Checks Middleware
+app.UseAppHealthChecks();
+
+
+
 app.Run();
