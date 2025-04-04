@@ -10,15 +10,17 @@ builder.AddDependencies();
 
 //-------------------------Add Middleware to app--------------------
 var app = builder.Build();
-//added static clas for OpenApi
+//added static clas for OpenApi Middleware
 app.UseOpenApi();
 
 
 app.UseHttpsRedirection();
 
 //--------------------------Endpoints--------------------------------
-// Add static class for Endpoint service file
+// Add static class for Endpoint service Middleware
 app.AddRootEndPoints();
 app.AddSampleEndpoints();
 
+// Add static class for CORES Middleware
+app.AddCoresConfig();
 app.Run();

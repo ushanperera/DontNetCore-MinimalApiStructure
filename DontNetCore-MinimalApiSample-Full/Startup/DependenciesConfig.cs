@@ -12,6 +12,9 @@ namespace DontNetCore_MinimalApiStructure.Startup
             //Load the data from the Json file
             builder.Services.AddTransient<Repository.SampleData>();
 
+            //Add the Cores services
+            builder.Services.AddCoresServises();
+
 
         }
 

@@ -1,0 +1,29 @@
+﻿@page "/"
+@using SampleTest_UI.Models;
+@inject HttpClient http;
+
+<PageTitle>Home</PageTitle>
+
+<h1>Sample Tester UI</h1>
+
+<h3>All List of Sample Data</h3>
+
+
+@if (sampleData is not null)
+{
+    @foreach (var item in sampleData)
+    {
+        <li> @item.Name + " - " @item.Description </li>
+    }
+}
+
+
+@code{
+    private List<SampleModel>? sampleData;
+
+    protected override  async Task OnInitializedAsync()
+    {
+        sampleData = await http.GetFromJsonAsync<List<SampleModel>>("https://localhost:7131/samples");
+    }
+}
+
