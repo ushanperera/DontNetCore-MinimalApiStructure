@@ -17,6 +17,9 @@ namespace DontNetCore_MinimalApiStructure.Startup.Dependencies
         //Middleware
         public static void UseAppHealthChecks(this WebApplication app)
         {
+            //To Navigate
+            //https://localhost:7131/health
+
             // Map health check endpoints
             app.MapHealthChecks("/health");
             app.MapHealthChecks("/health/random");
