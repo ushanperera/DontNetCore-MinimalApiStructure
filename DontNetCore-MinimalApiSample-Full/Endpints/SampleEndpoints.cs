@@ -23,7 +23,7 @@ namespace DontNetCore_MinimalApiStructure.Endpints
             //    return Results.Ok(data?.sampleData);
             //});
 
-   //app.MapGet("/sample/{id}", (int id) =>
+            //app.MapGet("/sample/{id}", (int id) =>
             //{
             //    var sample = sampleData?.sampleData.FirstOrDefault(x => x.Id == id);
             //    if (sample == null)
@@ -34,13 +34,14 @@ namespace DontNetCore_MinimalApiStructure.Endpints
             //});
 
 
-            //With the HTTP support
+            // 03. With the HTTP support
             app.MapGet("/samples", (LoadAllSample));
 
             app.MapGet("/sample/{id}", (LoadSampleById));
 
+            app.MapGet("/sampleFilter", (LoadSampleFilter));
 
-         
+
         }
 
 
@@ -51,14 +52,34 @@ namespace DontNetCore_MinimalApiStructure.Endpints
 
         private static IResult LoadSampleById(SampleData data, int id)
         {
-            var sample = data?.sampleData.FirstOrDefault(x => x.Id == id);
-            if (sample == null)
+            var output = data?.sampleData.FirstOrDefault(x => x.Id == id);
+            if (output == null)
             {
                 return Results.NotFound();
             }
-            return Results.Ok(sample);
+            return Results.Ok(output);
         }
 
+        private static IResult LoadSampleFilter(SampleData data, string? Name, string? Description)
+        {
 
+            var output = data.sampleData;
+
+            if (string.IsNullOrWhiteSpace(Name) == false)
+            {
+                output.RemoveAll(x => !x.Name.Contains(Name));
+            }
+            if (string.IsNullOrWhiteSpace(Description) == false)
+            {
+                output.RemoveAll(x => !x.Description.Contains(Description));
+            }
+
+
+            if (output == null)
+            {
+                return Results.NotFound();
+            }
+            return Results.Ok(output);
+        }
     }
-    }
+}
